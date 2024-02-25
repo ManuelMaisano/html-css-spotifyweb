@@ -3,41 +3,509 @@
     padding: 0;
     box-sizing: border-box;
 }
-.wrapper{
-    height: 100vh;
-    overflow: hidden;
-    background-color: #1a1a1a;
+ul{
+    list-style: none;
 }
-#toolbar{
-    background-color: grey;
-    height: 100px;
+a{
+    text-decoration: none;
 }
-.content{
-    height: calc(100vh - 80px);
+:root {
+	--color-content-background: #141922;
+	--color-nav-background: #000000;
+	--color-primary: #ffffff;
+	--color-toolbar-background: #282828;
+	--color-text-not-highlighted: #787a7f;
+	--color-text-highlighted: #d2d2d2;
+	--color-new-playlists: #a3a3a3;
+	--color-text-underscore: #adff2f;
+}
+
+button {
+    border: none;
+    cursor: pointer;
+}
+
+img {
     width: 100%;
-    background-color: lightskyblue;
 }
-#sidebar{
-    width: 200px;
-    height: 100%;
-    background-color: blue;
+
+/* ------------ */
+
+
+.row {
+    display: flex;
+    flex-wrap: wrap;
+    margin: 0 -10px;
 }
-main{
-    width: calc(100% - 200px);
-    background-color: aqua;
-    padding-top: 100px;
+
+.col {
+    padding: 0 10px;
+}
+
+.grow {
+    flex-grow: 1;
+}
+
+
+/*---------- */
+
+
+
+body * {
+    font-family: "Montserrat", sans-serif;
+}
+
+
+/* ---APP BODY--------- */
+
+
+.app-body {
+    height: calc(100vh - 90px);
+    display: flex;
+}
+
+/* SIDEBAR -----*/
+.sidebar {
+    background-color: var(--color-nav-background);
+    color: var(--color-new-playlists);
+    width: 230px;
+    flex-shrink: 0;
+    padding: 15px;
+    display: flex;
+    flex-direction: column;
+}
+
+.logo, 
+.sidebar .navbar,
+.new-playlist {
+   margin-bottom: 20px;
+}
+
+.logo img {
+    max-height: 40px;
+    width: auto;
+}
+
+#logo-small {
+    display: none;
+}
+
+.sidebar .navbar li {
+    margin-bottom: 8px;
+}
+
+.sidebar .navbar img {
+    max-height: 25px;
+    max-width: 25px;
+    margin-right: 5px;
+}
+
+.sidebar .navbar span,
+.new-playlist span,
+.playlist li,
+.account span {
+    vertical-align: super;
+    padding-left: 5px;
+    font-weight: 900;
+    font-size: 14px;
+}
+
+.new-playlist {
+    margin-bottom: 20px;
+}
+.new-playlist h4,
+.new-playlist span {
+    font-size: 16px;
+}
+
+.new-playlist a:hover {
+    color: white;
+}
+
+.new-playlist h4 {
+    text-transform: uppercase;
+    color: white;
+    margin-bottom: 15px;
+}
+
+.new-playlist .fa-solid {
+    font-size: 38px;
+    margin-right: 5px;
+}
+
+.playlist {
+    flex-grow: 1;
     overflow-y: auto;
 }
-.topbar{
-    background-color: rgba(0, 0, 0, 0.377);
-    height: 80px;
-    position: fixed;
-    top: 0;
-    left: 200px;
-    width: calc(100% - 200px);
-}
-/* flex utility */
 
-.d-flex{
+.playlist li {
+    margin-bottom: 20px;
+}
+
+.playlist li:hover {
+    color: white;
+}
+
+.account {
+    margin-top: auto;
+}
+
+.account img {
+    width: 20px;
+    height: 20px;
+}
+
+.account a:hover {
+    color: white;
+}
+
+.account hr {
+    margin: 8px 0;
+}
+
+.account .profile {
+    width: 25px;
+    height: 25px;
+    background-color: var(--color-text-not-highlighted);
+    border-radius: 50%;
+    margin-top: 8px;
+}
+
+.account h4 {
+    color: white;
+    font-size: 16px;
+    display: inline;
+    padding-left: 5px;
+    vertical-align: super;
+}
+/*----- /SIDEBAR */
+/* /MAIN -----*/
+.main {
+    background-color:var(--color-content-background);
+    width: 100%;
+    overflow-y: auto;
+}
+
+.upgrade {
+    background-color: rgba(8, 11, 18, 0.8);
+    height: 90px;
+    position: sticky;
+    top: 0;
+    right: 0;
+    z-index: 10;
     display: flex;
+    justify-content: end;
+    align-items: center;
+}
+
+.upgrade button {
+    background-color: transparent;
+    border: 2px solid white;
+    border-radius: 35px;
+    padding: 10px 25px;
+    color: white;
+    text-transform: uppercase;
+    font-size: 16px;
+    font-weight: 900;
+    margin: 0px 10px;
+}
+
+.upgrade button:hover {
+    font-size: 18px;
+    padding: 12px 28px;
+}
+
+
+.main .navbar ul {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+}
+
+.main .navbar li {
+    margin: 20px 20px;
+    color: var(--color-text-not-highlighted);
+    text-transform: uppercase;
+    font-size: 16px;
+    font-weight: 900;
+}
+
+.navbar li:hover  {
+    color: white;
+}
+
+.recently-played,
+.for-you,
+.popular  {
+    margin: 20px 20px;
+    color: white;
+}
+
+.recently-played h2 {
+    margin-bottom: 20px;
+}
+
+.recently-played .col,
+.for-you .col,
+.popular .col {
+    width: calc(100%/6);
+    padding: 10px;
+}
+
+.album-cover {
+    position: relative;
+}
+
+.album-cover img {
+    display: block;
+}
+
+.album-cover-hover {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    right: 0;
+    left: 0;
+    z-index: 1;
+    background-color: rgba(18, 18, 19, 0.6);
+    opacity: 0;
+    transition: 0.4s opacity;
+}
+
+.album:hover .album-cover-hover {
+    opacity: 1;
+}
+
+.album-cover-hover .fa-circle-play {
+    font-size: 52px;
+}
+
+.album h4,
+.album h5 {
+    margin: 5px 0;
+    text-align: center;
+}
+
+.album h5,
+.for-you h5,
+.popular h5 {
+    color: var(--color-text-not-highlighted);
+}
+
+.for-you h2,
+.popular h2 {
+    margin-bottom: 10px;
+}
+
+.for-you h5,
+.popular h5 {
+    margin-bottom: 20px;
+}
+
+.popular .album-cover {
+    border-radius: 50%;
+    overflow: hidden;
+}
+
+/*----- /MAIN */
+
+.app-player {
+    background-color: var(--color-toolbar-background);
+    height: 90px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px;
+    color: white;
+}
+
+.player-icons {
+    color: #a3a3a3;
+}
+
+.player-icons i:hover {
+    color: white;
+}
+
+.app-player .left {
+    width: 25%;
+    display: flex;
+    align-items: center;
+    justify-content: left;
+}
+
+.app-player .left img {
+    width: 45px;
+    height: 45px;
+}
+
+.app-player .left .album-info,
+.app-player .left .fa-folder {
+    margin-left: 10px;
+}
+
+.app-player .left .player-icons {
+    margin-left: 40px;
+}
+
+.app-player .left .album-info h6 {
+    color: var(--color-text-not-highlighted);
+}
+
+.app-player .left .album-info h6:hover {
+    color: white;
+    text-decoration: underline;
+}
+
+.app-player .middle {
+    width: 50%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+.app-player .middle i {
+    font-size: 16px;
+    margin: 5px 10px;
+}
+
+.app-player .middle .fa-circle-play {
+    font-size: 28px;
+    vertical-align: middle;
+}
+.app-player .middle .now-playing {
+    display: flex;
+    align-items: center;
+}
+
+.app-player .middle .play-bar {
+    height: 5px;
+    width: 400px;
+    background-color:var(--color-text-not-highlighted);
+    border-radius: 10px;
+    display: block;
+    margin: 10px 10px;
+}
+
+.app-player .middle .play-bar-in {
+    height: 5px;
+    width: 100px;
+    background-color: white;
+    border-radius: 10px;
+}
+
+.app-player .right {
+    width: 25%;
+    display: flex;
+    align-items: center;
+    justify-content: right;
+}   
+
+.app-player .right i,
+.app-player .right .vol-bar {
+    margin-left: 20px;
+}
+
+.app-player .right .vol-bar {
+    height: 5px;
+    width: 100px;
+    background-color: var(--color-new-playlists);
+    display: inline-block;
+    vertical-align: middle;
+    border-radius: 10px;
+}
+
+.app-player .right .vol-bar-in {
+    height: 5px;
+    width: 40px;
+    background-color: white;
+    border-radius: 10px;
+}
+
+
+
+/* ----Media Quesry */
+
+
+
+
+@media screen and (max-width:1200px) {
+    .recently-played .col,
+    .for-you .col,
+    .popular .col {
+        width: calc(100%/4);
+    }
+
+    .app-player .left .album-info,
+    .app-player .left .fa-folder {
+        margin: auto;
+    }  
+
+    .app-player .middle .now-playing {
+        width: 100%;
+    }
+}
+
+@media screen and (max-width:768px) {
+    .app-player .left{
+        width: auto;
+    }
+
+    .app-player .left .album-info,
+    .app-player .left .fa-folder {
+        margin: auto;
+    }  
+
+    .app-player .middle .now-playing {
+        width: 100%;
+    }
+}
+
+@media screen and (max-width:576px) {
+    .sidebar {
+        width: 40px;
+        padding: 10px;
+    }
+
+    .logo :first-child,
+    .sidebar .navbar span,
+    .new-playlist,
+    .playlist,
+    .account span,
+    .account hr,
+    .account h4 {
+        display: none;
+    }
+
+    #logo-small {
+        display: block;
+    }
+
+    .sidebar .navbar img {
+        width: 100%;
+    }
+
+    .recently-played .col,
+    .for-you .col,
+    .popular .col {
+        width: calc(100%/2);
+    }
+
+    .app-player .left {
+        width: auto;
+    }
+
+    .app-player .left .album-info,
+    .app-player .left .fa-folder {
+        margin: auto;
+    }  
+
+    .app-player .middle .now-playing {
+        width: 100%;
+    }
+
 }
