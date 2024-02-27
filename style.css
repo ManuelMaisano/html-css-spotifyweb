@@ -457,6 +457,11 @@ body * {
     .app-player .left{
         width: auto;
     }
+    .recently-played .col,
+    .for-you .col,
+    .popular .col {
+        width: calc(100% / 3);
+    }
 
     .app-player .left .album-info,
     .app-player .left .fa-folder {
@@ -495,7 +500,7 @@ body * {
     .recently-played .col,
     .for-you .col,
     .popular .col {
-        width: calc(100%/2);
+        width: calc(100% / 2 );
     }
 
     .app-player .left {
