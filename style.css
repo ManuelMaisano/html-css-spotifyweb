@@ -63,6 +63,7 @@ body * {
 .app-body {
     height: calc(100vh - 90px);
     display: flex;
+    overflow: hidden;
 }
 
 /* SIDEBAR -----*/
@@ -74,6 +75,7 @@ body * {
     padding: 15px;
     display: flex;
     flex-direction: column;
+    min-height: 480px;
 }
 
 .logo, 
